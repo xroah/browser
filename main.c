@@ -4,8 +4,7 @@ void activate(GtkApplication *, gpointer);
 
 void activate(GtkApplication *app, gpointer user_data)
 {
-	GtkWidget *window = create_window(app);
-	load_page(window, NULL, webkit_uri_request_new("https://bing.com"));
+	create_window(app, NULL);
 }
 
 int main(int argc, char *argv[])

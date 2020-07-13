@@ -1,0 +1,18 @@
+.top-box {
+
+}
+
+.top-box .btn {
+	padding: 0 10px;
+    background: transparent;
+    border: none;
+    transition: all .3s;
+}
+
+.top-box .btn:hover {
+	box-shadow: 0 0 5px 0 #666;
+}
+
+.top-box .btn:active {
+	background: rgba(0, 0, 0, .1);
+}

@@ -5,8 +5,10 @@
 #include <gtk/gtk.h>
 #include <webkit2/webkit2.h>
 
-void load_page(GtkWidget *, WebKitWebView *, WebKitURIRequest *);
 void handle_load_change(WebKitWebView *, WebKitLoadEvent, gpointer);
-GtkWidget* create_window(GtkApplication *);
+void create_window(GtkApplication *, WebKitWebView *);
+void load_page(GtkWindow *, WebKitWebView *, WebKitURIRequest *);
 gboolean handle_context_menu(WebKitWebView *, WebKitContextMenu *, GdkEvent *, WebKitHitTestResult *, gpointer);
 GtkWidget* handle_web_view_create(WebKitWebView *, WebKitNavigationAction *, gpointer);
+void init_web_view_settings(WebKitWebView *);
+WebKitWebView* add_web_view(GtkBox *, WebKitWebView *);
