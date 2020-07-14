@@ -6,9 +6,9 @@
 #include <webkit2/webkit2.h>
 
 void handle_load_change(WebKitWebView *, WebKitLoadEvent, gpointer);
-void create_window(GtkApplication *, WebKitWebView *);
-void load_page(GtkWindow *, WebKitWebView *, WebKitURIRequest *);
+GtkBuilder* create_window(GtkApplication *, WebKitWebView *);
+void load_page(GtkBuilder *, WebKitWebView *, WebKitURIRequest *);
 gboolean handle_context_menu(WebKitWebView *, WebKitContextMenu *, GdkEvent *, WebKitHitTestResult *, gpointer);
 GtkWidget* handle_web_view_create(WebKitWebView *, WebKitNavigationAction *, gpointer);
 void init_web_view_settings(WebKitWebView *);
-WebKitWebView* add_web_view(GtkBox *, WebKitWebView *);
+WebKitWebView* add_web_view(GtkBuilder *, WebKitWebView *);
