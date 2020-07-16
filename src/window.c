@@ -2,7 +2,7 @@
 
 inline static gboolean hide_progress_bar(GtkProgressBar *progress_bar)
 {
-    gtk_widget_hide((GtkWidget *)progress_bar);
+    gtk_widget_set_opacity((GtkWidget *)progress_bar, 0);
 
     return FALSE;
 }
@@ -10,24 +10,20 @@ inline static gboolean hide_progress_bar(GtkProgressBar *progress_bar)
 void handle_load_change(WebKitWebView *wv, WebKitLoadEvent evt, gpointer user_data)
 {
     GtkBuilder *builder = (GtkBuilder *)user_data;
-    GtkWindow *win = (GtkWindow *)gtk_builder_get_object(builder, "top-window");
     GtkProgressBar *progress_bar = (GtkProgressBar *)gtk_builder_get_object(builder, "progressbar");
 
     switch(evt)
     {
     case WEBKIT_LOAD_STARTED:
-        gtk_widget_show((GtkWidget *)progress_bar);
-        gtk_progress_bar_pulse((GtkProgressBar *)progress_bar);
+        gtk_widget_set_opacity((GtkWidget *)progress_bar, 1);
         gtk_progress_bar_set_fraction(progress_bar, 0);
-        //gtk_window_set_title(win, "loading");
         break;
     case WEBKIT_LOAD_REDIRECTED:
         break;
     case WEBKIT_LOAD_COMMITTED:
         break;
     case WEBKIT_LOAD_FINISHED:
-        //gtk_window_set_title(win, webkit_web_view_get_title(wv));
-        g_timeout_add(100, (GSourceFunc)hide_progress_bar, progress_bar);
+        g_timeout_add(300, (GSourceFunc)hide_progress_bar, progress_bar);
         break;
     }
 
@@ -161,7 +157,10 @@ GtkBuilder* create_window(GtkApplication *app, WebKitWebView *web_view)
     gtk_button_set_image(forward_btn, gtk_image_new_from_file("./assets/forward.png"));
     gtk_button_set_image(refresh_btn, gtk_image_new_from_file("./assets/refresh.png"));
     gtk_button_set_image(menu_btn, gtk_image_new_from_file("./assets/menu.png"));
-    gtk_widget_set_size_request(gtk_builder_get_object(builder, "progressbar"), -1, 1);
+
+    GtkWidget *progress_bar = (GtkWidget *)gtk_builder_get_object(builder, "progressbar");
+    GtkStyleContext *pbar_ctx = gtk_widget_get_style_context((GtkWidget *)progress_bar);
+    gtk_style_context_add_class(pbar_ctx, "osd");
 
     gtk_widget_show_all(window);
 
