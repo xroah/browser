@@ -1,18 +1,23 @@
-.top-box .btn {
-	padding: 0 10px;
+.btn {
+	padding: 0 5px;
     background-color: transparent;
     border: none;
+    border-radius: 0;
     transition: all .3s;
 }
 
-.top-box .btn:hover {
-	box-shadow: 0 0 5px 0 #666;
+.btn:hover {
+    background-color: rgba(255, 255, 255, .1);
 }
 
-.top-box .btn:active {
-	background-color: rgba(0, 0, 0, .1);
+.btn:active {
+	background-color: rgba(255, 255, 255, .2);
 }
 
 .progress-bar {
-    color: red;
+    background-color: red;
+}
+
+.titlebar, .top-root-box {
+    background-color: #272a34;
 }

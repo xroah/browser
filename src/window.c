@@ -2,7 +2,7 @@
 
 inline static gboolean hide_progress_bar(GtkProgressBar *progress_bar)
 {
-    gtk_widget_hide((GtkProgressBar *)progress_bar);
+    gtk_widget_hide((GtkWidget *)progress_bar);
 
     return FALSE;
 }
@@ -11,23 +11,23 @@ void handle_load_change(WebKitWebView *wv, WebKitLoadEvent evt, gpointer user_da
 {
     GtkBuilder *builder = (GtkBuilder *)user_data;
     GtkWindow *win = (GtkWindow *)gtk_builder_get_object(builder, "top-window");
-    GtkProgressBar *progress_bar = gtk_builder_get_object(builder, "progressbar");
+    GtkProgressBar *progress_bar = (GtkProgressBar *)gtk_builder_get_object(builder, "progressbar");
 
     switch(evt)
     {
     case WEBKIT_LOAD_STARTED:
-        gtk_widget_show(progress_bar);
-        gtk_progress_bar_pulse(progress_bar);
+        gtk_widget_show((GtkWidget *)progress_bar);
+        gtk_progress_bar_pulse((GtkProgressBar *)progress_bar);
         gtk_progress_bar_set_fraction(progress_bar, 0);
-        gtk_window_set_title(win, "loading");
+        //gtk_window_set_title(win, "loading");
         break;
     case WEBKIT_LOAD_REDIRECTED:
         break;
     case WEBKIT_LOAD_COMMITTED:
         break;
     case WEBKIT_LOAD_FINISHED:
-        gtk_window_set_title(win, webkit_web_view_get_title(wv));
-        g_timeout_add(100, hide_progress_bar, progress_bar);
+        //gtk_window_set_title(win, webkit_web_view_get_title(wv));
+        g_timeout_add(100, (GSourceFunc)hide_progress_bar, progress_bar);
         break;
     }
 
@@ -117,6 +117,7 @@ GtkBuilder* create_window(GtkApplication *app, WebKitWebView *web_view)
 {
     GtkWidget *window = gtk_window_new(GTK_WINDOW_TOPLEVEL);
     GtkBuilder *builder = gtk_builder_new_from_file("./ui/page.ui");
+    GtkBuilder *header_builder = gtk_builder_new_from_file("./ui/header-bar.ui");
     GtkBox *root_box = (GtkBox *)gtk_builder_get_object(builder, "root-box");
     GtkStyleContext *style_ctx = gtk_widget_get_style_context(window);
     GtkCssProvider *css_provider = gtk_css_provider_new();
@@ -124,13 +125,18 @@ GtkBuilder* create_window(GtkApplication *app, WebKitWebView *web_view)
     gtk_style_context_add_class(style_ctx, "top-window");
     gtk_css_provider_load_from_path(css_provider, "./styles/page.css", NULL);
     gtk_style_context_add_provider_for_screen(
-        gtk_window_get_screen(window),
+        gtk_window_get_screen((GtkWindow *)window),
         (GtkStyleProvider *) css_provider,
         GTK_STYLE_PROVIDER_PRIORITY_APPLICATION
     );
 
     gtk_application_add_window(app, (GtkWindow *)window);
     gtk_builder_set_application(builder, app);
+
+    GtkHeaderBar *header_bar = (GtkHeaderBar *)gtk_builder_get_object(header_builder, "header-bar");
+
+    gtk_window_set_titlebar((GtkWindow *)window, (GtkWidget *)header_bar);
+    gtk_header_bar_set_show_close_button(header_bar, TRUE);
 
     gtk_container_add((GtkContainer *)window, (GtkWidget *)root_box);
     gtk_window_set_default_size(GTK_WINDOW(window), 1024, 720);
@@ -145,8 +151,17 @@ GtkBuilder* create_window(GtkApplication *app, WebKitWebView *web_view)
         load_page(builder, wv, webkit_uri_request_new("https://bing.com"));
     }
 
+    GtkButton *new_tab_btn = (GtkButton *)gtk_builder_get_object(header_builder, "new-tab-btn");
+    GtkButton *back_btn = (GtkButton *)gtk_builder_get_object(builder, "back-btn");
+    GtkButton *forward_btn = (GtkButton *)gtk_builder_get_object(builder, "forward-btn");
     GtkButton *refresh_btn = (GtkButton *)gtk_builder_get_object(builder, "refresh-btn");
+    GtkButton *menu_btn = (GtkButton *)gtk_builder_get_object(builder, "menu-btn");
+    gtk_button_set_image(new_tab_btn, gtk_image_new_from_file("./assets/add.png"));
+    gtk_button_set_image(back_btn, gtk_image_new_from_file("./assets/back.png"));
+    gtk_button_set_image(forward_btn, gtk_image_new_from_file("./assets/forward.png"));
     gtk_button_set_image(refresh_btn, gtk_image_new_from_file("./assets/refresh.png"));
+    gtk_button_set_image(menu_btn, gtk_image_new_from_file("./assets/menu.png"));
+    gtk_widget_set_size_request(gtk_builder_get_object(builder, "progressbar"), -1, 1);
 
     gtk_widget_show_all(window);
 
