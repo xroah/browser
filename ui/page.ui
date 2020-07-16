@@ -111,6 +111,9 @@
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="opacity">0</property>
+        <style>
+          <class name="top-progress"/>
+        </style>
       </object>
       <packing>
         <property name="expand">False</property>

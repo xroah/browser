@@ -29,6 +29,11 @@
     border-top: 1px solid #333;
 }
 
-.osd progress {
+.top-progress progress {
+    border-radius: 0;
     background: #007bff;
+}
+
+.top-progress {
+    margin-bottom: -3px;
 }
