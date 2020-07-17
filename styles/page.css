@@ -32,8 +32,6 @@
 .top-progress progress {
     border-radius: 0;
     background: #007bff;
+    min-height: 3px;
 }
 
-.top-progress {
-    margin-bottom: -3px;
-}

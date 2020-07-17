@@ -4,6 +4,9 @@
 
 #include <gtk/gtk.h>
 #include <webkit2/webkit2.h>
+#include "topbar.h"
+#include "headerbar.h"
+#include "webview.h"
 
 void handle_load_change(WebKitWebView *, WebKitLoadEvent, gpointer);
 GtkBuilder* create_window(GtkApplication *, WebKitWebView *);
@@ -13,19 +16,9 @@ GtkWidget* handle_web_view_create(WebKitWebView *, WebKitNavigationAction *, gpo
 void init_web_view_settings(WebKitWebView *);
 WebKitWebView* add_web_view(GtkBuilder *, WebKitWebView *);
 
-typedef struct titlebar {
-    GtkWidget *add_btn;
-} titlebar;
-
-typedef struct topbar {
-    GtkWidget *back_btn;
-    GtkWidget *forward_btn;
-    GtkWidget *refresh_btn;
-    GtkWidget *url_input;
-    GtkWidget *menu_btn;
-} topbar;
-
 typedef struct window {
-    titlebar titlebar;
-    topbar topbar;
-} window;
+    Headerbar *headerbar;
+    Topbar *topbar;
+    WebKitWebView *web_view;
+    GtkWindow *window;
+} Window;
