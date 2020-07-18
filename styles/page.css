@@ -34,4 +34,7 @@
     background: #007bff;
     min-height: 3px;
 }
+.top-progress {
+    margin-top: -5px;
+}
 
