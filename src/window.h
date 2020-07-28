@@ -1,5 +1,5 @@
-#ifndef _WINDOW_H
-#define _WINDOW_H
+#ifndef WINDOW_H_
+#define WINDOW_H_
 
 #include <gtk/gtk.h>
 #include <webkit2/webkit2.h>
@@ -24,4 +24,4 @@ typedef struct window {
     GtkWindow *window;
 } Window;
 
-#endif // _WINDOW_H
+#endif // WINDOW_H_

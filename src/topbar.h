@@ -1,5 +1,5 @@
-#ifndef _TOPBAR_H
-#define _TOPBAR_H
+#ifndef TOPBAR_H_
+#define TOPBAR_H
 
 #include <gtk/gtk.h>
 #include <webkit2/webkit2.h>
@@ -10,7 +10,7 @@ typedef struct topbar {
     GtkButton *back_btn;
     GtkButton *forward_btn;
     GtkButton *refresh_btn;
-    GtkButton *url_input;
+    GtkEntry *url_input;
     GtkButton *menu_btn;
 } Topbar;
 
@@ -21,4 +21,4 @@ void handle_press_enter(GtkEntry *, gpointer);
 void handle_menu(GtkButton *, gpointer);
 Topbar* create_topbar(void);
 
-#endif // _TOPBAR_H
+#endif // TOPBAR_H_

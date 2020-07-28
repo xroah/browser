@@ -51,7 +51,7 @@ void handle_refresh(GtkButton *btn, gpointer web_view)
 void handle_press_enter(GtkEntry *entry, gpointer web_view)
 {
     WebKitWebView *wv = (WebKitWebView *) web_view;
-    char *text = gtk_entry_get_text(entry);
+    const char *text = gtk_entry_get_text(entry);
 
 
 }

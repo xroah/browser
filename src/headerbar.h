@@ -1,5 +1,5 @@
-#ifndef _HEADERBAR_H
-#define _HEADERBAR_H
+#ifndef HEADERBAR_H_
+#define HEADERBAR_H_
 
 #include <gtk/gtk.h>
 #include <webkit2/webkit2.h>
@@ -14,5 +14,4 @@ typedef struct headerbar
 
 
 Headerbar* create_headerbar(WebKitWebView *);
-
-#endif // _HEADERBAR_H
+#endif // HEADERBAR_H_
