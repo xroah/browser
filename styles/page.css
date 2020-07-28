@@ -1,5 +1,5 @@
 .btn {
-	padding: 0 5px;
+	padding: 2px;
     background: transparent;
     border: none;
     border-radius: 0;
@@ -8,21 +8,24 @@
 }
 
 .btn:hover {
-    background: rgba(255, 255, 255, .1);
+    background-color: rgba(255, 255, 255, .1);
 }
 
 .btn:active {
-	background: rgba(255, 255, 255, .2);
+	background-color: rgba(255, 255, 255, .2);
 }
 
 .progress-bar {
     background: red;
 }
 
-.titlebar, .top-root-box {
-    background: #272a34;
+.header-bar, .top-root-box {
     border: none;
-    box-shadow: none;
+    background: #272a34;
+}
+
+.header-bar {
+    min-height: 20px;
 }
 
 .top-root-box {
@@ -34,7 +37,44 @@
     background: #007bff;
     min-height: 3px;
 }
+
 .top-progress {
     margin-top: -5px;
+}
+
+.new-tab-btn {
+    padding: 0;
+    min-width: 24px;
+    min-height: 24px;
+    background: url("../assets/add.png") no-repeat center center / 20px 20px;
+}
+
+.tab-header-root {
+    border-top: 3px solid #007bff;
+    background-color: rgba(255, 255, 255, .3);
+}
+
+.tab-header-root.active {
+    border-top: 3px solid #007bff;
+    background-color: rgba(255, 255, 255, .1);
+}
+
+.close-tab-btn {
+    margin: 5px;
+    padding: 0;
+    border: none;
+    border-radius: 0;
+    min-width: 16px;
+    min-height: 16px;
+    background: url("../assets/stop.png") no-repeat center center / 16px 16px;
+    box-shadow: none;
+}
+
+.close-tab-btn:hover {
+    background-color: #dc3545;
+}
+
+.close-tab-btn:active {
+    background-color: #bd2130;
 }
 
