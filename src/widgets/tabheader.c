@@ -61,17 +61,20 @@ static void tab_header_init(TabHeader *th)
     th->box = gtk_box_new(GTK_ORIENTATION_HORIZONTAL, 0);
     th->close_btn = gtk_button_new();
     th->icon = gtk_image_new();
-    th->title = gtk_label_new("title");
-    style_ctx = gtk_widget_get_style_context(th);
+    th->title = gtk_label_new("title title title title title");
+    style_ctx = gtk_widget_get_style_context(GTK_WIDGET(th));
     close_btn_style_ctx = gtk_widget_get_style_context(th->close_btn);
 
     gtk_style_context_add_class(style_ctx, "tab-header-root");
     gtk_style_context_add_class(close_btn_style_ctx, "close-tab-btn");
+    gtk_widget_set_name(th->title, "tabTitle");
+    //gtk_widget_set_size_request(th->title, 100, -1);
     gtk_widget_set_valign(th->icon, GTK_ALIGN_CENTER);
     gtk_widget_set_valign(th->close_btn, GTK_ALIGN_CENTER);
     gtk_container_add(GTK_CONTAINER(th), th->box);
     gtk_container_add(GTK_CONTAINER(th->box), th->icon);
     gtk_container_add(GTK_CONTAINER(th->box), th->title);
+    gtk_label_set_ellipsize(GTK_LABEL(th->title), PANGO_ELLIPSIZE_END);
     gtk_container_add(GTK_CONTAINER(th->box), th->close_btn);
 }
 

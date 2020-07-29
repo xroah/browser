@@ -18,6 +18,7 @@
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
+            <property name="valign">center</property>
             <property name="margin_left">10</property>
             <style>
               <class name="back-btn"/>
@@ -35,6 +36,7 @@
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
+            <property name="valign">center</property>
             <property name="margin_left">10</property>
             <property name="margin_right">10</property>
             <style>
@@ -53,6 +55,7 @@
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
+            <property name="valign">center</property>
             <style>
               <class name="refresh-btn"/>
               <class name="btn"/>
@@ -68,6 +71,7 @@
           <object class="GtkEntry" id="url-input">
             <property name="visible">True</property>
             <property name="can_focus">True</property>
+            <property name="valign">center</property>
             <property name="margin_start">10</property>
             <property name="margin_end">10</property>
             <style>
@@ -85,6 +89,7 @@
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
+            <property name="valign">center</property>
             <property name="margin_right">10</property>
             <style>
               <class name="menu-btn"/>

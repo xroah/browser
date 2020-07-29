@@ -1,5 +1,5 @@
 .btn {
-	padding: 2px;
+	padding: 5px;
     background: transparent;
     border: none;
     border-radius: 0;
@@ -21,15 +21,11 @@
 
 .header-bar, .top-root-box {
     border: none;
-    background: #272a34;
+    background: #3B3B3B;
 }
 
 .header-bar {
     min-height: 20px;
-}
-
-.top-root-box {
-    border-top: 1px solid #333;
 }
 
 .top-progress progress {
@@ -50,8 +46,11 @@
 }
 
 .tab-header-root {
-    border-top: 3px solid #007bff;
     background-color: rgba(255, 255, 255, .3);
+}
+
+.tab-header-root  #tabTitle {
+    color: #fff;
 }
 
 .tab-header-root.active {
