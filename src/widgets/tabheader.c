@@ -7,6 +7,7 @@ enum {
 
 static void tab_header_class_init(TabHeaderClass *);
 static void tab_header_init(TabHeader *);
+static gboolean handle_button_press(GtkWidget *, GdkEvent *, gpointer);
 
 static guint tab_header_signals[LAST_SIGNAL] = { 0 };
 
@@ -54,28 +55,42 @@ static void tab_header_class_init(TabHeaderClass *kclass)
     );
 }
 
+static gboolean handle_button_press(GtkWidget *widget, GdkEvent *evt, gpointer user_data)
+{
+g_print("button press\n");
+    return TRUE;
+}
+
 static void tab_header_init(TabHeader *th)
 {
     GtkStyleContext *style_ctx;
-    GtkStyleContext *close_btn_style_ctx;
-    th->box = gtk_box_new(GTK_ORIENTATION_HORIZONTAL, 0);
+    th->wrapper = gtk_box_new(GTK_ORIENTATION_HORIZONTAL, 0);
+    th->event_box = gtk_event_box_new();
     th->close_btn = gtk_button_new();
     th->icon = gtk_image_new();
-    th->title = gtk_label_new("title title title title title");
+    th->title = gtk_label_new("哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈");
     style_ctx = gtk_widget_get_style_context(GTK_WIDGET(th));
-    close_btn_style_ctx = gtk_widget_get_style_context(th->close_btn);
 
     gtk_style_context_add_class(style_ctx, "tab-header-root");
-    gtk_style_context_add_class(close_btn_style_ctx, "close-tab-btn");
+    gtk_widget_set_name(th->close_btn, "closeTabBtn");
     gtk_widget_set_name(th->title, "tabTitle");
-    //gtk_widget_set_size_request(th->title, 100, -1);
+    gtk_widget_set_tooltip_text (th->title, "hhhh");
+
+    gtk_container_add(GTK_CONTAINER(th), th->event_box);
+    gtk_container_add(GTK_CONTAINER(th->event_box), th->wrapper);
+    gtk_container_add(GTK_CONTAINER(th->wrapper), th->icon);
+    gtk_container_add(GTK_CONTAINER(th->wrapper), th->title);
+    gtk_container_add(GTK_CONTAINER(th->wrapper), th->close_btn);
+
+    gtk_widget_set_size_request(GTK_WIDGET(th->wrapper), 200, -1);
+    gtk_widget_set_halign(th->title, GTK_ALIGN_START);
+    gtk_label_set_ellipsize(GTK_LABEL(th->title), PANGO_ELLIPSIZE_END);
+    gtk_box_set_child_packing(GTK_BOX(th->wrapper), th->title, TRUE, TRUE, 0, GTK_PACK_START);
+    gtk_label_set_max_width_chars((GtkLabel *)th->title, 15);
     gtk_widget_set_valign(th->icon, GTK_ALIGN_CENTER);
     gtk_widget_set_valign(th->close_btn, GTK_ALIGN_CENTER);
-    gtk_container_add(GTK_CONTAINER(th), th->box);
-    gtk_container_add(GTK_CONTAINER(th->box), th->icon);
-    gtk_container_add(GTK_CONTAINER(th->box), th->title);
-    gtk_label_set_ellipsize(GTK_LABEL(th->title), PANGO_ELLIPSIZE_END);
-    gtk_container_add(GTK_CONTAINER(th->box), th->close_btn);
+
+    g_signal_connect(th->event_box, "button-press-event", G_CALLBACK(handle_button_press), NULL);
 }
 
 GtkWidget* tab_header_new()

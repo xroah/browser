@@ -10,6 +10,7 @@ typedef struct headerbar
     GtkBox *tab_wrapper;
     WebKitWebView *web_view;
     GtkHeaderBar *bar;
+    GtkWidget *titlebar;
 } Headerbar;
 
 

@@ -11,9 +11,10 @@
 
 typedef struct _TabHeader
 {
-    GtkEventBox event_box;
+    GtkBox box;
 
-    GtkWidget *box;
+    GtkWidget *event_box;
+    GtkWidget *wrapper;
     GtkWidget *icon;
     GtkWidget *close_btn;
     GtkWidget *title;
@@ -29,5 +30,6 @@ typedef struct _TabHeaderClass
 GType tab_header_get_type(void);
 GtkWidget* tab_header_new(void);
 void tab_header_clear(TabHeader *);
+void tab_header_set_title(TabHeader *, gchar *);
 
 #endif // TABHEADER_H_

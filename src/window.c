@@ -44,7 +44,6 @@ GtkWindow* create_window(GtkApplication *app, WebKitWebView *web_view)
     gtk_window_set_titlebar(win, (GtkWidget *)window.headerbar->bar);
     gtk_container_add((GtkContainer *) win, (GtkWidget *)box);
     gtk_widget_set_vexpand((GtkWidget *) wv, TRUE);
-    //g_signal_connect(wv, "button-press-event", G_CALLBACK(handle_create), NULL);
     gtk_container_add((GtkContainer *) box, (GtkWidget *)window.topbar->root);
     gtk_container_add((GtkContainer *) box, (GtkWidget *)wv);
     webkit_web_view_load_uri(wv, "https://cn.bing.com");
@@ -56,6 +55,10 @@ GtkWindow* create_window(GtkApplication *app, WebKitWebView *web_view)
     init_style((GtkWidget *)win);
 
     gtk_widget_show_all((GtkWidget *)win);
+    GtkAllocation allocation = { 0 };
+    gtk_widget_get_allocated_size(window.headerbar->titlebar, &allocation, NULL);
+
+    g_print("header bar: width = %d, height = %d\n", allocation.width, allocation.height);
 
     return win;
 }

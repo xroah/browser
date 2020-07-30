@@ -28,6 +28,11 @@
     min-height: 20px;
 }
 
+.header-bar .placeholder-bar {
+    min-height: 1px;
+    background-color: red;
+}
+
 .top-progress progress {
     border-radius: 0;
     background: #007bff;
@@ -49,6 +54,10 @@
     background-color: rgba(255, 255, 255, .3);
 }
 
+.tab-header-root + .tab-header-root {
+    border-left: 1px solid rgba(255, 255, 255, .6);
+}
+
 .tab-header-root  #tabTitle {
     color: #fff;
 }
@@ -58,7 +67,7 @@
     background-color: rgba(255, 255, 255, .1);
 }
 
-.close-tab-btn {
+.tab-header-root #closeTabBtn {
     margin: 5px;
     padding: 0;
     border: none;
@@ -69,11 +78,11 @@
     box-shadow: none;
 }
 
-.close-tab-btn:hover {
+.tab-header-root #closeTabBtn:hover {
     background-color: #dc3545;
 }
 
-.close-tab-btn:active {
+.tab-header-root #closeTabBtn:active {
     background-color: #bd2130;
 }
 
