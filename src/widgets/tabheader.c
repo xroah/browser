@@ -69,6 +69,7 @@ static void tab_header_init(TabHeader *th)
     th->close_btn = gtk_button_new();
     th->icon = gtk_image_new();
     th->title = gtk_label_new("哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈");
+    th->spinner = gtk_spinner_new();
     style_ctx = gtk_widget_get_style_context(GTK_WIDGET(th));
 
     gtk_style_context_add_class(style_ctx, "tab-header-root");
@@ -79,6 +80,7 @@ static void tab_header_init(TabHeader *th)
     gtk_container_add(GTK_CONTAINER(th), th->event_box);
     gtk_container_add(GTK_CONTAINER(th->event_box), th->wrapper);
     gtk_container_add(GTK_CONTAINER(th->wrapper), th->icon);
+    gtk_container_add(GTK_CONTAINER(th->wrapper), th->spinner);
     gtk_container_add(GTK_CONTAINER(th->wrapper), th->title);
     gtk_container_add(GTK_CONTAINER(th->wrapper), th->close_btn);
 
@@ -96,6 +98,16 @@ static void tab_header_init(TabHeader *th)
 GtkWidget* tab_header_new()
 {
     return GTK_WIDGET(g_object_new(TAB_HEADER_TYPE, NULL));
+}
+
+void tab_header_set_title(TabHeader *th, gchar *title)
+{
+    gtk_label_set_text((GTK_LABEL(th->title), title);
+}
+
+void tab_header_set_favicon(TabHeader *th, cairo_surface_t *img)
+{
+    gtk_image_set_from_surface(GTK_IMAGE(th->icon), img);
 }
 
 void tab_header_clear(TabHeader *th)

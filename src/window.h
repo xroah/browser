@@ -5,7 +5,6 @@
 #include <webkit2/webkit2.h>
 #include "topbar.h"
 #include "headerbar.h"
-#include "webview.h"
 #include "tab.h"
 
 void handle_load_change(WebKitWebView *, WebKitLoadEvent, gpointer);

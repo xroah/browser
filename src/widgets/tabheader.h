@@ -18,6 +18,7 @@ typedef struct _TabHeader
     GtkWidget *icon;
     GtkWidget *close_btn;
     GtkWidget *title;
+    GtkWidget *spinner;
 } TabHeader;
 
 typedef struct _TabHeaderClass
@@ -31,5 +32,6 @@ GType tab_header_get_type(void);
 GtkWidget* tab_header_new(void);
 void tab_header_clear(TabHeader *);
 void tab_header_set_title(TabHeader *, gchar *);
+void tab_header_set_favicon(TabHeader *, cairo_surface_t *);
 
 #endif // TABHEADER_H_
