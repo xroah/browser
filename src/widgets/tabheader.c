@@ -102,7 +102,7 @@ GtkWidget* tab_header_new()
 
 void tab_header_set_title(TabHeader *th, gchar *title)
 {
-    gtk_label_set_text((GTK_LABEL(th->title), title);
+    gtk_label_set_text(GTK_LABEL(th->title), title);
 }
 
 void tab_header_set_favicon(TabHeader *th, cairo_surface_t *img)

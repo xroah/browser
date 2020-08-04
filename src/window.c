@@ -45,7 +45,7 @@ GtkWindow* create_window(GtkApplication *app, WebKitWebView *web_view)
     gtk_container_add((GtkContainer *) win, (GtkWidget *)box);
     gtk_widget_set_vexpand((GtkWidget *) wv, TRUE);
     gtk_container_add((GtkContainer *) box, (GtkWidget *)window.topbar->root);
-    gtk_container_add((GtkContainer *) box, (GtkWidget *)wv);
+    gtk_container_add((GtkContainer *) box, (l *)wv);
     webkit_web_view_load_uri(wv, "https://cn.bing.com");
     gtk_application_add_window(app, win);
     gtk_window_set_default_size(win, 1024, 800);

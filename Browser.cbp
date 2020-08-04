@@ -40,20 +40,23 @@
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="src/control.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/control.h" />
 		<Unit filename="src/global.h" />
 		<Unit filename="src/headerbar.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="src/headerbar.h" />
+		<Unit filename="src/tab.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="src/tab.h" />
 		<Unit filename="src/topbar.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="src/topbar.h" />
-		<Unit filename="src/webview.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="src/webview.h" />
 		<Unit filename="src/widgets/tabheader.c">
 			<Option compilerVar="CC" />
 		</Unit>
