@@ -1,0 +1,17 @@
+.window-title-bar {
+    padding: 5px;
+    border: none;
+    border-radius: 0;
+    color: #fff;
+    background-color: #333;
+}
+
+.logo {
+    padding: 10px;
+    min-width: 150px;
+    margin: 0 15px;
+    border: none;
+    background: url("../icons/top-bar.png") no-repeat 0 -15px;
+}
+
+
