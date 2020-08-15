@@ -35,9 +35,11 @@
 		<Linker>
 			<Add option="`pkg-config gtk+-3.0 webkit2gtk-4.0 --libs`" />
 		</Linker>
+		<Unit filename="css/title-bar.css" />
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="ui/title-bar.glade" />
 		<Extensions />
 	</Project>
 </CodeBlocks_project_file>
