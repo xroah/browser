@@ -15,4 +15,11 @@
     background: url("../icons/top-bar.png") no-repeat 0 -15px;
 }
 
+.search-input {
+    min-width: 220px;
+    min-height: 20px;
+    padding: 0 10px;
+    border-radius: 20px;
+    background-color: rgba(255, 255, 255, .1);
+}
 
