@@ -11,13 +11,32 @@ handle_search(GtkWidget *btn, gpointer user_data)
     return TRUE;
 }
 
-TitleBar* title_bar_new(GtkWidget *window) {
-    TitleBar *title_bar = malloc(sizeof(title_bar));
+gboolean handle_settings(GtkWidget *btn, gpointer window)
+{
+    GtkWidget *dialog = gtk_dialog_new_with_buttons(
+                            "设置",
+                            (GtkWindow *) window,
+                            GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT,
+                            "取消",
+                            GTK_RESPONSE_CANCEL,
+                            "确定",
+                            GTK_RESPONSE_OK,
+                            NULL
+                        );
+    gtk_widget_show_all(dialog);
+
+    return TRUE;
+}
+
+TitleBar* title_bar_new(GtkWidget *window)
+{
+    TitleBar *title_bar = (TitleBar *)malloc(sizeof(TitleBar));
     GtkCssProvider *css_provider = gtk_css_provider_new();
     GtkBuilder *builder = gtk_builder_new_from_file("ui/title-bar.glade");
     title_bar->bar = (GtkWidget *)gtk_builder_get_object(builder, "title-bar");
     title_bar->search_input = (GtkWidget *)gtk_builder_get_object(builder, "search-input");
     title_bar->search_btn = (GtkWidget *)gtk_builder_get_object(builder, "search-btn");
+    title_bar->settings_btn = (GtkWidget *)gtk_builder_get_object(builder, "settings-btn");
 
     gtk_css_provider_load_from_path(css_provider, "css/title-bar.css", NULL);
     gtk_style_context_add_provider_for_screen(
@@ -26,7 +45,18 @@ TitleBar* title_bar_new(GtkWidget *window) {
         GTK_STYLE_PROVIDER_PRIORITY_APPLICATION
     );
     g_signal_connect(window, "destroy", G_CALLBACK(window_destroy), title_bar);
-    g_signal_connect(title_bar->search_btn, "activate-link", G_CALLBACK(handle_search), NULL);
+    g_signal_connect(
+        title_bar->search_btn,
+        "activate-link",
+        G_CALLBACK(handle_search),
+        NULL
+    );
+    g_signal_connect(
+        title_bar->settings_btn,
+        "activate-link",
+        G_CALLBACK(handle_settings),
+        window
+    );
 
     return title_bar;
 }

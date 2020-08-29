@@ -1,5 +1,5 @@
 .window-title-bar {
-    padding: 5px;
+    padding: 5px 15px;
     border: none;
     border-radius: 0;
     color: #fff;
@@ -29,14 +29,23 @@
     background-color: transparent;
 }
 
-.search-btn {
+.title-bar-btn {
     min-width: 16px;
     min-height: 16px;
     padding: 0;
-    background: url("../icons/search.png") no-repeat center center;
+    background-repeat: no-repeat;
+    background-position: center center;
     background-size: 100% 100%;
 }
-.search-btn:hover {
-    box-shadow: 0 0 3px 0 white;
-    background-color: rgba(255, 255, 255, .1);
+
+.title-bar-btn:hover {
+    background-color: rgba(255, 255, 255, .2);
+}
+
+.search-btn {
+    background-image: url("../icons/search.png");
+}
+
+.settings-btn {
+    background-image: url("../icons/settings.png");
 }
