@@ -15,11 +15,28 @@
     background: url("../icons/top-bar.png") no-repeat 0 -15px;
 }
 
-.search-input {
-    min-width: 220px;
-    min-height: 20px;
-    padding: 0 10px;
+.search-box {
+    padding: 0 10px 0 0;
     border-radius: 20px;
-    background-color: rgba(255, 255, 255, .1);
+    background-color: rgba(255, 255, 255, .2);
 }
 
+.search-input {
+    min-width: 180px;
+    min-height: 16px;
+    padding: 0 10px 0 15px;
+    border: none;
+    background-color: transparent;
+}
+
+.search-btn {
+    min-width: 16px;
+    min-height: 16px;
+    padding: 0;
+    background: url("../icons/search.png") no-repeat center center;
+    background-size: 100% 100%;
+}
+.search-btn:hover {
+    box-shadow: 0 0 3px 0 white;
+    background-color: rgba(255, 255, 255, .1);
+}
