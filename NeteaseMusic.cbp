@@ -39,6 +39,10 @@
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="title_bar.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="title_bar.h" />
 		<Unit filename="ui/title-bar.glade" />
 		<Extensions />
 	</Project>

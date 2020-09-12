@@ -1,0 +1,38 @@
+.settings-root-box {
+    padding: 10px;
+    min-width: 800px;
+    min-height: 500px;
+}
+
+.settings-ok-btn {
+    margin-left: 10px;
+    background-color: #007bff;
+    border-color: #007bff;
+    color: #fff;
+}
+
+.settings-ok-btn:hover {
+    background-color: #0069d9;
+    border-color: #0069d9;
+}
+
+.settings-cancel-btn {
+    background-color: #f8f9fa;
+    color: #333;
+}
+
+.settings-ok-btn:active {
+    background-color: #0062cc;
+    border-color: #0062cc;
+}
+
+.settings-cancel-btn:hover {
+    background-color: #e2e6ea;
+    border-color: #e2e6ea;
+}
+
+.settings-cancel-btn:active {
+    background-color: #dae0e5;
+    border-color: #dae0e5;
+    color: #333;
+}

@@ -3709,7 +3709,14 @@
 1598693493 /home/x/Develop/netease-music-linux/title_bar.h
 	<gtk/gtk.h>
 
-1598694000 source:/home/x/Develop/netease-music-linux/title_bar.c
+1602489552 source:/home/x/Develop/netease-music-linux/title_bar.c
 	"title_bar.h"
+	"settings.h"
 	<stdlib.h>
+
+1599898627 source:/home/x/Develop/netease-music-linux/settings.c
+	"settings.h"
+
+1599898429 /home/x/Develop/netease-music-linux/settings.h
+	<gtk/gtk.h>
 

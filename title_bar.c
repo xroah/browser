@@ -1,4 +1,5 @@
 #include "title_bar.h"
+#include "settings.h"
 #include<stdlib.h>
 
 void window_destroy(GtkWidget *window, gpointer user_data)
@@ -6,23 +7,14 @@ void window_destroy(GtkWidget *window, gpointer user_data)
     free(user_data);
 }
 
-handle_search(GtkWidget *btn, gpointer user_data)
+gboolean handle_search(GtkWidget *btn, gpointer user_data)
 {
     return TRUE;
 }
 
 gboolean handle_settings(GtkWidget *btn, gpointer window)
 {
-    GtkWidget *dialog = gtk_dialog_new_with_buttons(
-                            "设置",
-                            (GtkWindow *) window,
-                            GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT,
-                            "取消",
-                            GTK_RESPONSE_CANCEL,
-                            "确定",
-                            GTK_RESPONSE_OK,
-                            NULL
-                        );
+    GtkWidget *dialog = settings_dialog_new();
     gtk_widget_show_all(dialog);
 
     return TRUE;
