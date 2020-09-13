@@ -30,7 +30,7 @@
 		</Build>
 		<Compiler>
 			<Add option="-Wall" />
-			<Add option="`pkg-config gtk+-3.0  webkit2gtk-4.0 --cflags`" />
+			<Add option="`pkg-config gtk+-3.0  webkit2gtk-4.0  --cflags`" />
 		</Compiler>
 		<Linker>
 			<Add option="`pkg-config gtk+-3.0 webkit2gtk-4.0 --libs`" />
@@ -39,6 +39,10 @@
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="settings.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="settings.h" />
 		<Unit filename="title_bar.c">
 			<Option compilerVar="CC" />
 		</Unit>
