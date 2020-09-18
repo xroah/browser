@@ -1,5 +1,10 @@
+.settings-dialog .titlebar {
+    border-radius: 0;
+}
+
 .settings-root-box {
     padding: 10px;
+    border-radius: 0;
     min-width: 800px;
     min-height: 500px;
 }

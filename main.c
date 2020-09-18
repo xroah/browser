@@ -5,19 +5,19 @@
 
 void create_window(GtkApplication *app, gpointer user_data)
 {
-    GtkWidget *win = gtk_application_window_new(app);
-    TitleBar *title_bar = title_bar_new(win);
+    GtkWindow *win = (GtkWindow *) gtk_application_window_new(app);
+    TitleBar *title_bar = title_bar_new((GtkWidget *)win);
     GdkGeometry geo =
     {
         .min_width = MIN_WIDTH,
         .min_height = MIN_HEIGHT
     };
 
-    gtk_window_set_titlebar((GtkWindow *) win, title_bar->bar);
-    gtk_window_set_icon_from_file((GtkWindow *) win, "./icons/logo.png", NULL);
-    gtk_widget_show_all(win);
-    gtk_window_set_default_size((GtkWindow *) win, MIN_WIDTH, MIN_HEIGHT);
-    gtk_window_set_geometry_hints((GtkWindow *) win, NULL, &geo, GDK_HINT_MIN_SIZE);
+    gtk_window_set_titlebar(win, title_bar->bar);
+    gtk_window_set_icon_from_file(win, "./icons/logo.png", NULL);
+    gtk_widget_show_all((GtkWidget *)win);
+    gtk_window_set_default_size(win, MIN_WIDTH, MIN_HEIGHT);
+    gtk_window_set_geometry_hints(win, NULL, &geo, GDK_HINT_MIN_SIZE);
 }
 
 int main (int argc, char *argv[])

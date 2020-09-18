@@ -14,8 +14,8 @@ gboolean handle_search(GtkWidget *btn, gpointer user_data)
 
 gboolean handle_settings(GtkWidget *btn, gpointer window)
 {
-    GtkWidget *dialog = settings_dialog_new((GtkWindow *) window);
-    gtk_dialog_run((GtkDialog *)dialog);
+    GtkDialog *dialog = settings_dialog_new((GtkWindow *) window);
+    gtk_dialog_run(dialog);
 
     return TRUE;
 }
