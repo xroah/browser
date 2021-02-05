@@ -3720,7 +3720,8 @@
 1600420669 /home/x/Develop/netease-music-linux/settings.h
 	<gtk/gtk.h>
 
-1612509392 source:/home/vm/Develop/netease-music-linux/src/main.c
+1612513071 source:/home/vm/Develop/netease-music-linux/src/main.c
 	<ncurses.h>
 	<stdlib.h>
+	<locale.h>
 

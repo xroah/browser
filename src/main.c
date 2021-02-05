@@ -1,17 +1,22 @@
 #include <ncurses.h>
 #include <stdlib.h>
+#include <locale.h>
 
 int main (int argc, char *argv[])
 {
+    setlocale(LC_ALL, "zh_CN.UTF-8");
+
     initscr();
-    printw("Hello world! \n");
-    noecho();
+
+    printw("嘿嘿! \n");
+
     cbreak();
+    noecho();
     keypad(stdscr, TRUE);
 
     int c;
 
-    while(c = getch()) {
+    while((c = getch())) {
         if (c == 'q') {
             break;
         }
@@ -20,19 +25,19 @@ int main (int argc, char *argv[])
 
         switch(c) {
             case KEY_UP:
-                printw("\nArrow up\n");
+                printw("Arrow up\n");
                 break;
             case KEY_DOWN:
-                printw("\nArrow down\n");
+                printw("Arrow down\n");
                 break;
             case KEY_LEFT:
-                printw("\nArrow left\n");
+                printw("Arrow left\n");
                 break;
             case KEY_RIGHT:
-                printw("\nArrow right\n");
+                printw("Arrow right\n");
                 break;
             default:
-                printw("\nOther keys\n");
+                printw("Other keys\n");
         }
     }
 
